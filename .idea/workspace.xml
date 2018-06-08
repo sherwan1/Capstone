@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="df403b6a-99ba-467e-91d0-e507893b7f63" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bin/python" afterPath="$PROJECT_DIR$/modules/bin/python" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bin/python2.7" afterPath="$PROJECT_DIR$/modules/bin/python2.7" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/include/python2.7" afterPath="$PROJECT_DIR$/modules/include/python2.7" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/encodings" afterPath="$PROJECT_DIR$/modules/lib/python2.7/encodings" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/lib-dynload" afterPath="$PROJECT_DIR$/modules/lib/python2.7/lib-dynload" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/Django-1.11.5.dist-info" afterPath="$PROJECT_DIR$/modules/local/Django-1.11.5.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/Extras.pth" afterPath="$PROJECT_DIR$/modules/local/Extras.pth" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/PIL" afterPath="$PROJECT_DIR$/modules/local/PIL" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/PyInstaller" afterPath="$PROJECT_DIR$/modules/local/PyInstaller" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/README" afterPath="$PROJECT_DIR$/modules/local/README" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/Werkzeug-0.12.2.dist-info" afterPath="$PROJECT_DIR$/modules/local/Werkzeug-0.12.2.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/_argon2.so" afterPath="$PROJECT_DIR$/modules/local/_argon2.so" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/_cffi_backend.so" afterPath="$PROJECT_DIR$/modules/local/_cffi_backend.so" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/argon2" afterPath="$PROJECT_DIR$/modules/local/argon2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/argon2-0.1.10-py2.7.egg-info" afterPath="$PROJECT_DIR$/modules/local/argon2-0.1.10-py2.7.egg-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/argon2_cffi-16.3.0.dist-info" afterPath="$PROJECT_DIR$/modules/local/argon2_cffi-16.3.0.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/backports_abc-0.5.dist-info" afterPath="$PROJECT_DIR$/modules/local/backports_abc-0.5.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/bcrypt" afterPath="$PROJECT_DIR$/modules/local/bcrypt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/bcrypt-3.1.3.dist-info" afterPath="$PROJECT_DIR$/modules/local/bcrypt-3.1.3.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/bin" afterPath="$PROJECT_DIR$/modules/local/bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/certifi" afterPath="$PROJECT_DIR$/modules/local/certifi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/certifi-2017.7.27.1.dist-info" afterPath="$PROJECT_DIR$/modules/local/certifi-2017.7.27.1.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/cffi" afterPath="$PROJECT_DIR$/modules/local/cffi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/cffi-1.11.0.dist-info" afterPath="$PROJECT_DIR$/modules/local/cffi-1.11.0.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/click" afterPath="$PROJECT_DIR$/modules/local/click" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/click-6.7.dist-info" afterPath="$PROJECT_DIR$/modules/local/click-6.7.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/django" afterPath="$PROJECT_DIR$/modules/local/django" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/easy-install.pth" afterPath="$PROJECT_DIR$/modules/local/easy-install.pth" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/enum-0.4.6-py2.7.egg-info" afterPath="$PROJECT_DIR$/modules/local/enum-0.4.6-py2.7.egg-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/flask" afterPath="$PROJECT_DIR$/modules/local/flask" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/include" afterPath="$PROJECT_DIR$/modules/local/include" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/jinja2" afterPath="$PROJECT_DIR$/modules/local/jinja2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/lib" afterPath="$PROJECT_DIR$/modules/local/lib" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/lxml-3.7.2-py2.7.egg-info" afterPath="$PROJECT_DIR$/modules/local/lxml-3.7.2-py2.7.egg-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/markupsafe" afterPath="$PROJECT_DIR$/modules/local/markupsafe" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/olefile" afterPath="$PROJECT_DIR$/modules/local/olefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/olefile-0.44-py2.7.egg-info" afterPath="$PROJECT_DIR$/modules/local/olefile-0.44-py2.7.egg-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/pip-9.0.1-py2.7.egg" afterPath="$PROJECT_DIR$/modules/local/pip-9.0.1-py2.7.egg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/pycparser" afterPath="$PROJECT_DIR$/modules/local/pycparser" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/pycparser-2.18-py2.7.egg-info" afterPath="$PROJECT_DIR$/modules/local/pycparser-2.18-py2.7.egg-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/requests" afterPath="$PROJECT_DIR$/modules/local/requests" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/requests-2.12.4.dist-info" afterPath="$PROJECT_DIR$/modules/local/requests-2.12.4.dist-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/simplejson" afterPath="$PROJECT_DIR$/modules/local/simplejson" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/simplejson-3.11.1-py2.7.egg-info" afterPath="$PROJECT_DIR$/modules/local/simplejson-3.11.1-py2.7.egg-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/tornado" afterPath="$PROJECT_DIR$/modules/local/tornado" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/tornado-4.5.1-py2.7.egg-info" afterPath="$PROJECT_DIR$/modules/local/tornado-4.5.1-py2.7.egg-info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/werkzeug" afterPath="$PROJECT_DIR$/modules/local/werkzeug" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/.Python" afterPath="$PROJECT_DIR$/my_project/.Python" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/bin/python2" afterPath="$PROJECT_DIR$/my_project/bin/python2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/bin/python2.7" afterPath="$PROJECT_DIR$/my_project/bin/python2.7" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/include/python2.7" afterPath="$PROJECT_DIR$/my_project/include/python2.7" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/config" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/encodings" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/encodings" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/lib-dynload" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/lib-dynload" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/UserDict.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/UserDict.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/_abcoll.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/_abcoll.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/_weakrefset.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/_weakrefset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/abc.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/abc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/codecs.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/codecs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/copy_reg.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/copy_reg.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/fnmatch.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/fnmatch.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/genericpath.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/genericpath.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/linecache.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/linecache.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/locale.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/locale.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/ntpath.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/ntpath.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/os.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/os.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/posixpath.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/posixpath.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/re.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/re.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/sre.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/sre.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/sre_compile.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/sre_compile.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/sre_constants.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/sre_constants.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/sre_parse.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/sre_parse.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/stat.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/stat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/types.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/types.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/lib/python2.7/warnings.py" afterPath="$PROJECT_DIR$/modules/lib/python2.7/warnings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/OleFileIO_PL.py" afterPath="$PROJECT_DIR$/modules/local/OleFileIO_PL.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/argon2.py" afterPath="$PROJECT_DIR$/modules/local/argon2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/enum.py" afterPath="$PROJECT_DIR$/modules/local/enum.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/itsdangerous.py" afterPath="$PROJECT_DIR$/modules/local/itsdangerous.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/singledispatch.py" afterPath="$PROJECT_DIR$/modules/local/singledispatch.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/local/singledispatch_helpers.py" afterPath="$PROJECT_DIR$/modules/local/singledispatch_helpers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/UserDict.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/UserDict.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/_abcoll.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/_abcoll.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/_weakrefset.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/_weakrefset.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/abc.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/abc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/codecs.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/codecs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/copy_reg.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/copy_reg.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/fnmatch.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/fnmatch.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/genericpath.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/genericpath.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/linecache.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/linecache.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/locale.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/locale.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/ntpath.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/ntpath.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/os.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/os.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/posixpath.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/posixpath.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/re.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/re.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/sre.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/sre.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/sre_compile.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/sre_compile.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/sre_constants.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/sre_constants.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/sre_parse.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/sre_parse.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/stat.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/stat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/types.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/types.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_project/lib/python2.7/warnings.py" afterPath="$PROJECT_DIR$/my_project/lib/python2.7/warnings.py" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/learning_users/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-264">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="group.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/group.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="254" column="20" lean-forward="false" selection-start-line="254" selection-start-column="20" selection-end-line="254" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/basic_app/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1377">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/profile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3502">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/basic_app/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="454" column="36" lean-forward="true" selection-start-line="454" selection-start-column="36" selection-end-line="454" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="group.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/basic_app/group.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my_groups.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/basic_app/my_groups.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/basic_app/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/templates/basic_app/my_groups.html" />
+        <option value="$PROJECT_DIR$/basic_app/views.py" />
+        <option value="$PROJECT_DIR$/static/js/group.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1309" />
+    <option name="height" value="645" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="capstone" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="capstone" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="capstone" type="462c0819:PsiDirectoryNode" />
+              <item name="learning_users" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="capstone" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="capstone" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="capstone" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="capstone" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="capstone" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df403b6a-99ba-467e-91d0-e507893b7f63" name="Default" comment="" />
+      <created>1518906885184</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1518906885184</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="10" y="20" width="1309" height="645" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/basic_app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learning_users/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-264">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/basic_app/group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/basic_app/my_groups.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3502">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/group.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="254" column="20" lean-forward="false" selection-start-line="254" selection-start-column="20" selection-end-line="254" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basic_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1377">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basic_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="454" column="36" lean-forward="true" selection-start-line="454" selection-start-column="36" selection-end-line="454" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

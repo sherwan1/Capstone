@@ -1,0 +1,144 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/search.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/friendRequests.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+<style>
+.header{
+    color: black;
+    padding-left:2%;
+    font-weight: bold; 
+    font-size: 120%
+}
+
+.list-font{
+    font-size: medium;
+    color: black;
+  }
+
+  .panel-primary{
+  color: white;
+  background-color: #6a93a7;
+  font-family: Calibri;
+  font-size: 120%;
+}
+
+.panel-description{
+  font-family: Calibri;
+   font-size: 120%;
+   color:black;
+}
+._hover:hover  *{
+    background-color:#e6e6ff;
+    color: black;
+  }
+</style>
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}}
+
+{% block middle-column %}
+ <div class="w3-col m7">
+
+      
+
+     <label class="header"> Search Results</label>
+     {% if search_result %}
+     <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left:2%;padding-bottom:2%;margin-top:1%;padding-left:2%;padding-right: 2%;"><br>
+
+
+
+         
+
+         <!-- Adding the below hidden input to store the email of the actual user in a variable which would be used in js file when sending friend request
+         <input type="hidden" id="myVar" name="variable" value="{{ pr }}">
+
+         Then getting the value in javascript this way,
+
+        var myVar = document.getElementById("myVar").value; -->
+        
+         {% for item in search_result %}
+
+
+        {% if item.type == "person" %}
+          <img src="{{item.profile.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px;height:60px">
+         <a href="/profile/{{item.profile.id}}" style="font-weight: bold;font-size: 120%">{{item.profile.first_name}} {{item.profile.last_name}}</a><br>
+         <div style="margin-top:1%">
+        {% if item.req %}
+         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Waiting for Reply to friend Request</button>
+          {% elif item.friend %}
+        <button  type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  You and {{item.profile.first_name}} are friends</button>
+         {% else %}
+        <button email="{{item.profile.email}}" type="button" class="friend-request w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Send Request</button>
+    
+         {% endif %}
+          </div>
+
+        {% elif item.type == "group" %}
+        
+         {% if item.name != "" %}
+         <a  href="/group/{{item.group.id}}" style="text-decoration: none">
+                <div class="_hover">
+                  
+                  
+                    <div class="w3-col m2 ">
+                    <img src="{{item.group.image.url}}" class="w3-circle " style="height:112px;width:114px" alt="Avatar">
+                    </div>
+                    <div class="w3-col m10">
+                      <div class="panel-group ">
+                            <div class="panel panel-primary ">
+                                  <div class="panel-body ">Group Name: {{item.group.name}}</div>
+                            </div>
+                          
+                            <div style="margin-bottom:2%;"class="panel-body panel-description">Information: {{item.group.description}}</div>
+                      </div>
+                    </div>
+               </div>
+              </a>
+         {% endif %}
+
+
+
+         {% elif item.type == "course" %}
+         
+
+         {% if item.code != "" %}
+             <a  href="/course/{{item.course.id}}" style="text-decoration: none">
+                <div class="_hover">
+                  
+                  
+                    
+                  <div class="panel-group ">
+                    <div class="panel panel-primary ">
+                          <div class="group_name panel-body ">Course Code: {{item.course.code}}</div>
+                    </div>
+                  
+                      <div class="panel-body panel-description ">Name: {{item.course.name}}</div>
+                  
+              
+                  </div>
+                </div>
+              </a>
+          {% endif %}
+
+
+        {% endif %}
+
+
+         {% endfor %}
+
+         
+     </div>
+
+     
+         {% else %}
+            <p style="margin-left:2%;margin-top:1%;">No match found for the query string</p>
+        {% endif %}
+
+ </div>
+{% endblock %}

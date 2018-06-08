@@ -1,0 +1,41 @@
+{% extends "basic_app/group.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/friendRequests.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+
+
+{% block middle-column %}
+
+
+    <div class="w3-col m7" style="padding-left:1%;">
+
+<label style="font-weight: bold; font-size: 120%;"> Members ({{members|length}}) </label>
+   <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container" style="padding:1%">
+
+                <div height="100%" >
+
+                       {% for member in members %}
+                       <div class="w3-col m2" style="float:left;">
+                     <p class="w3-center"><img src="{{member.member.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                    <p  align="center"> <a href="/profile/{{member.member.id}}"> {{ member.member.first_name }} {{ member.member.last_name }}</a></p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+    </div>
+
+
+   </div>
+
+
+
+
+ {% endblock %}}  <!--end of middle bloc

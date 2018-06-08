@@ -1,0 +1,200 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="" /><link rel="mask-icon" type="" href="" color="#111" /><link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://use.typekit.net/hoy3lrg.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+
+<link rel="stylesheet" href="{% static '/css/bootstrap-iso.css' %}">
+<link rel="stylesheet" href="{% static '/css/messaging.css' %}">
+
+
+
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+
+<script type="text/javascript" src="{% static '/js/messaging.js' %}"></script>
+
+<style>
+	#frame{
+		margin-top: 40px;
+		margin-left: 0px;
+	}
+</style>
+{% endblock %}
+
+
+ {% block one-row %}
+
+{% csrf_token %}
+
+    <div  id="frame">
+	<div id="sidepanel">
+		<div id="profile">
+			<div class="wrap">
+				<img id="profile-img" src="{{profile.profile_pic.url}}" class="online" alt="" />
+				<p>{{profile.email}}</p>
+				<i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
+				<div id="status-options">
+					<ul>
+						<li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
+						<li id="status-away"><span class="status-circle"></span> <p>Away</p></li>
+						<li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>
+						<li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
+					</ul>
+				</div>
+				<div id="expanded">
+					<label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
+					<input name="twitter" type="text" value="mikeross" />
+					<label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
+					<input name="twitter" type="text" value="ross81" />
+					<label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
+					<input name="twitter" type="text" value="mike.ross" />
+				</div>
+			</div>
+		</div>
+		<div id="search_messaging">
+			<label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+			<input id="search_box" type="text" placeholder="Search contacts..." />
+		</div>
+		<div id="contacts">
+			<ul>
+				{% for friend in friendList %}
+
+				<li class="contact" person="{{friend.friend.email}}">
+					<div class="wrap">
+						{% if friend.friend.email in notifications_by %}
+						 <!--<span class="glyphicon glyphicon-bell"></span> -->
+						<span class="bell-ring bell fa fa-bell" person="{{friend.friend.email}}"></span>
+						{%endif%}
+						<img class="contact_photo" person="{{friend.friend.email}}" src="{{friend.friend.profile_pic.url}}" alt="" />
+						<div class="meta">
+							<p class="name">{{friend.friend.email}}</p>
+
+						</div>
+					</div>
+				</li>
+
+				{% endfor %}
+
+
+
+			</ul>
+		</div>
+		<div id="bottom-bar">
+			<button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
+			<button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
+		</div>
+	</div>
+	<div class="content">
+		<div class="contact-profile">
+			<img class="contact-img-top" src="" alt="" style="max-width: 50px;max-height: 50px;"/>
+			<p class="contact-name-top">Click on contacts to view Messages</p>
+
+		</div>
+
+
+
+		{% for friend in friendList %}
+		<div class="messages hidden" person="{{friend.friend.email}}">
+			<ul>
+				{% if friend.friend.email in chat_messages%}
+
+					{% for key, message in chat_messages.items %}
+
+
+						{% if key in friend.friend.email %}
+							{% 	for msg in message  %}
+
+								{% if  msg.messageFrom.email in friend.friend.email %}
+									<li class="replies">
+										<img src="{{friend.friend.profile_pic.url}}" alt="" style="max-width: 40px;max-height: 40px;"/>
+
+										{% if not msg.file_name %}
+										<p>{{msg.text}}</p>
+										{% else %}
+										<p><a href="{{msg.download_url}}">{{msg.file_name}}</a></p>
+										{% endif %}
+									</li>
+								{% else %}
+									<li class="sent">
+										<img src="{{msg.messageFrom.profile_pic.url}}" alt="" style="max-width: 40px;max-height: 40px;"/>
+										{% if not msg.file_name %}
+										<p>{{msg.text}}</p>
+										{% else %}
+										<p><a href="{{msg.download_url}}">{{msg.file_name}}</a></p>
+										{% endif %}
+									</li>
+								{% endif %}
+
+							{% endfor %}
+
+						{% endif%}
+
+
+ 					{% endfor %}
+
+
+
+				{% endif %}
+			</ul>
+		</div>
+
+		{% endfor %}
+
+
+
+
+
+
+
+			   <div class="message-input">
+					<div class="wrap">
+						<input class="msg_input_txt" type="text" placeholder="Write your message..." style="margin-bottom: 10px;"/>
+
+
+						<button style="width: 90px;" class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+					</div>
+
+					 <form id="file_form" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+
+							 <input name="file" id="id_file" type='file'> <span id='val1'></span>
+							 <span id='select_file_button'>Select File</span>
+
+					 </form>
+
+   </div>
+
+</div>
+    {% endblock %}
+
+
+{% block left-column %}
+
+{% endblock %}}
+
+{% block middle-column %}
+
+
+
+ {% endblock %}}
+
+{% block right-column %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block chatbox %}
+
+{% endblock %}

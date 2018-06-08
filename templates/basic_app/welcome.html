@@ -1,0 +1,26 @@
+{% extends "basic_app/base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+{% endblock %}
+
+{% block body_block %}
+  <div class="container">
+        <div class="jumbotron">
+
+        <p>Welcome to the Skulify!</p>
+
+         </div>
+
+        <div class="friends">
+            <p>Friends List</p>
+            <li>Clem</li>
+            <li>Adam</li>
+            <li>Russel</li>
+            <li>John</li>
+            <li>Danny12345</li>
+        </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,350 @@
+
+{% extends "basic_app/profile.html" %}
+
+{% block right-column %}
+     {% endblock %}
+
+
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/course.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+
+.h1{
+  font-size: 200%;
+}
+
+.navbar123{
+    margin-bottom: 100px;
+}
+
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.comment-bar{
+     display: none;
+ }
+.hidden{
+     display: none;
+ }
+  .activate{
+      display: block;
+  }
+
+    .comments{
+        margin-top: 0px!important;
+    }
+
+    .remove-bottom-margin{
+    margin-bottom: 0px!important;
+}
+
+</style>
+<body class="w3-theme-l5">
+{% csrf_token %}
+<input type="hidden" name="last_postID" value="{{last_postID}}">
+
+
+ {% block one-row %}
+    {% endblock %}
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+    <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+     {% block left-column %}
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card-2 w3-round w3-white">
+        <div class="w3-container">
+
+        
+            <div class="h1">{{course.code}}: {{course.name}}</div>
+
+    	        
+         <hr>
+         <p><i class="glyphicon glyphicon-book fa-fw w3-margin-right w3-text-theme"></i>Description: {{course.description}}</p>
+         <p><i class="glyphicon glyphicon-text-color fa-fw w3-margin-right w3-text-theme"></i>{{course.term}}, {{course.year}}</p>
+         <p><i class="glyphicon glyphicon-user fa-fw w3-margin-right w3-text-theme"></i>Instructor: {{course.creator.first_name}} {{course.creator.last_name}}</p>
+          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Lecture Section: {{course.section}}</p>
+         <p><i class="glyphicon glyphicon-time fa-fw w3-margin-right w3-text-theme"></i>Office Hours: {{course.office_hours}}</p>
+         <p><i class="glyphicon glyphicon-map-marker fa-fw w3-margin-right w3-text-theme"></i>Office Location: {{course.office_location}}</p>
+         <p><i class="glyphicon glyphicon-envelope fa-fw w3-margin-right w3-text-theme"></i>Instructor's Email: {{course.creator.email}}</p>
+
+        </div>
+      </div>
+      <br>
+
+        <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container">
+
+                <div height="100%" >
+                    <p> <a href="/course_members/{{course.id}}">Members ({{members|length}})</a> </p>
+                    <a href="/course_files/{{course.id}}"> Files</a>
+
+                      <br>
+                      {% if course.creator == profile %}
+                        
+                          <a href="/delete_course/{{course.id}}"> Delete Course </a>
+                      {% elif member_type == "member" %}
+                  
+                          <a href="/leave_course/{{course.id}}"> Leave Course </a>
+                      {% else %}
+                          <a href="/join_course/{{course.id}}"> Join Course </a>
+                      {% endif %}
+                </div>
+
+            </div>
+        </div>
+
+      <!-- Accordion -->
+     <br>
+
+     
+      <br>
+
+      <!-- Alert Box -->
+     
+
+    <!-- End Left Column -->
+    </div>
+    {% endblock %}
+
+
+    <!-- Middle Column -->
+     {% block middle-column %}
+     <p hidden class="w3-center"><img id="profile_pic2" src="{{profile.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+    <h4 hidden id="profile_name2" class="w3-center">{{profile.first_name}} {{profile.last_name}}</h4>
+    <h4 hidden id="profile_id2"> {{profile.id}}</h4>
+    <div class="w3-col m7">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+
+              <h6 class="w3-opacity">Question/Note?</h6>
+              <p contenteditable="true" class="post_input w3-border w3-padding"></p>
+             <!-- <textarea id="post_input" class="w3-border w3-padding" rows="3" cols="60">    </textarea> -->
+
+                {% if profile.account_type == "Instructor" %}
+                    <input type="checkbox" id="send_email" value="Yes" style="margin-left: 68%">
+                    <label for="send_email" style="margin-top: 1%">Send Email to Everyone</label>
+                {% endif %}
+              
+             <button type="button" course_id="{{course.id}}" class="post_submit w3-button w3-theme" style="float: right;"><i class="fa fa-pencil"></i>  Post</button>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+        <!-- Top Div starts here -->
+        <div id="Top">
+
+
+        </div>
+     <!-- Top div ends here -->
+
+
+
+   {% for i, v in comments.items %}
+
+        <div data="{{i.id}}" class="post-bar w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="{{i.owner.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="max-width:60px; max-height:60px">
+        <span class="w3-right w3-opacity">  {% load humanize %} {{i.pub_date | naturaltime }}</span>
+        <a href="/profile/{{i.owner.id}}" style="font-weight: bold;">{{i.owner.first_name}} {{i.owner.last_name}}</a><br>
+        <hr class="w3-clear">
+        <p>{{i.text}}</p>
+
+            <br>
+
+           
+
+
+         <button type="button" data="{{i.id}}" class="heart-button btn btn-danger btn-circle" style="
+     margin-bottom: 15px;" data-toggle="modal" data-target="#myModal"> <i class="glyphicon glyphicon-heart"></i><span class="likes_count" data="{{i.id}}">  {{i.likes}} </span></button>
+
+
+        {% if i in posts_liked_by_user %}
+          <button type="button" data="{{i.id}}" class="like-button w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i><span>   Liked</span></button>
+        {% else %}
+        <button type="button" data="{{i.id}}" class="like-button w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i><span>  Like</span></button>
+        {% endif %}
+        <button type="button" data="{{i.id}}" class="comment-button w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+        <!-- Comment Box starts here -->
+         <div  data="{{i.id}}" class="comments comment-bar w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+
+             <p contenteditable="true" class="comment_input w3-border w3-padding"></p>
+             <button data="{{i.id}}"type="button" class="comment_submit w3-button w3-theme"><i class="fa fa-pencil"></i>  Comment</button>
+
+             <div class="comments_section" data="{{i.id}}">
+              {%for t in v%}
+                <div class="w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+              <img src="{{t.owner.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="max-width:40px; max-height: 40px;">
+            <span class="w3-right w3-opacity">  {% load humanize %} {{t.pub_date | naturaltime }}</span>
+
+             <a href="/profile/{{t.owner.id}}" style="font-weight: bold;">{{t.owner.first_name}} {{t.owner.last_name}}</a><br>
+                    <h4>{{t.text}}</h4>
+
+                </div>
+             {% endfor %}
+                 </div>
+         </div>
+        <!-- Comment Box ends here -->
+{% endfor %}
+
+         <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Post Liked by</h4>
+        </div>
+        <div class="modal-body">
+          <div class="people_list">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <!--  <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">16 min</span>
+        <h4>Jane Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+      <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">32 min</span>
+        <h4>Angie Jane</h4><br>
+        <hr class="w3-clear">
+        <p>Have you seen this?</p>
+        <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div> -->
+
+    <!-- End Middle Column -->
+    </div>
+    {% endblock %}
+
+   
+  <!-- End Grid -->
+  </div>
+<input id="course_id" class="hidden" value="{{course.id}}"/>
+<!-- End Page Container -->
+</div>
+<br>
+
+{% block chatbox %}
+    <div id="chat-button123"><img id="chat-box-img" src="{% static '/images/chat-button-new.jpg' %}"> </div>
+	<div class="container w3layouts agileits">
+
+		<div id="chatbox">
+
+			<div id="friendslist">
+                <span id="pull-down-chat-bar" style="color: gold; font-size: 35px;  padding-left:10%;" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+
+				<div id="topmenu">
+                    <span class="friends">FRIENDS</span>
+				</div>
+
+				<div id="friends">
+
+                     {% for i in friendList %}
+                     <div class="friend w3layouts" person="{{i.friend.email}}">
+						<img class="friend_image" src="{{i.friend.profile_pic.url}}">
+						<p>
+							<strong>{{i.friend.name}}</strong>
+							<span>{{i.friend.email}}</span>
+						</p>
+						<div class="status inactive" person="{{i.friend.email}}"></div>
+					</div>
+
+                    {%endfor%}
+
+
+				</div>
+
+                <div id="search">
+						<input type="text" id="searchfield" value="Search contacts...">
+                </div>
+
+			</div>
+
+
+
+			<div id="chatview" class="p1">
+
+				<div id="profile">
+					<div id="close">
+						<div class="cy"></div>
+						<div class="cx"></div>
+					</div>
+					<p>Bucky Barnes</p>
+					<span>wintersoldier@gmail.com</span>
+				</div>
+
+
+                       {% for i in friendList %}
+                         <div class="chatmessages hidden1" data-person="{{i.friend.email}}">
+                                <label>Today</label>
+                         </div>
+                         <div class="endOfMsg"></div>
+
+                    {%endfor%}
+
+
+
+
+				<div id="sendmessage">
+					<input type="text" value="Send message...">
+					<button id="send"></button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+   {% endblock %}
+
+<!-- Footer -->
+ {% block footer %}
+
+   {% endblock %}
+
+  
+
+
+</body>
+</html>

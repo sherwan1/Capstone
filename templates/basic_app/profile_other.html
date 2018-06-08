@@ -1,0 +1,182 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/search.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+
+{% block left-column %}
+<div class="w3-col m3">
+      <!-- Profile -->
+     <div class="w3-card-2 w3-round w3-white">
+        <div class="w3-container">
+            {% if profile_other == profile %}
+          <a  href="/profile_edit" class="glyphicon glyphicon-pencil w3-right"></a>
+          {% endif %}
+         <h4 class="w3-center">{{profile_other.first_name}} {{profile_other.last_name}}</h4>
+
+
+            <p class="w3-center"><img src="{{profile_other.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+
+
+         <hr>
+          {% if profile_other.title is not None and profile_other.title != "" %}
+                   <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.title}}
+                {% endif %}
+                {% if profile_other.dept is not None and profile_other.dept != "" %}
+                    ,{{profile_other.dept}} 
+                {% endif %}
+            </p>
+            {% if profile_other.discipline is not None and profile_other.discipline != "" %}
+                   <p><i class="fa fa-university fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.discipline}}
+                {% endif %}
+                {% if profile_other.dept is not None and profile_other.dept != "" %}
+                    ,{{profile_other.dept}} 
+                {% endif %}
+            </p>
+          {% if profile_other.city is not None and profile_other.city != "" %}
+                 <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{profile.city}}
+                {% endif %}
+                {% if profile_other.country is not None and profile_other.country != "" %}
+                    , {{profile_other.country}}
+                {% endif %}
+
+                 </p>
+          {% if profile_other.dob is not None and profile_other.dob != "" %}
+                 <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.dob}}</p>
+                 {% endif %}
+
+         {% if profile_other.grad_date is not None and profile_other.grad_date != "" %}
+              <p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-text-theme"></i> Graduating in {{profile_other.grad_date}}</p>
+            {% endif %}
+          {% if profile_other.phone is not None and profile_other.phone != "" %}
+            <p><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.phone}}</p>
+          {% endif %}
+             <p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.email}}</p>
+          
+        </div>
+      </div>
+      {% if profile_other == profile %}
+            <br>
+
+      <!-- Accordion -->
+      <div class="w3-card-2 w3-round">
+        <div class="w3-white">
+          <a href = '/my_groups' class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</a>
+          <div id="Demo1" class="w3-hide w3-container">
+            <p>Some text..</p>
+          </div>
+          <a href = '/my_courses' class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-pencil fa-fw w3-margin-right"></i> My Courses</a>
+
+         {% block friend %}
+          <a href="/friendRequests" class="w3-button w3-block w3-theme-l1 w3-left-align"><i><span id="friendRequests"class="w3-badge w3-left w3-small w3-green">{{ req|length }}</span></i> Friend Requests</a>
+           {% endblock %}
+           <a href="/friendList" class="w3-button w3-block w3-theme-l1 w3-left-align"> <i class="fa fa-users fa-fw w3-margin-right"></i>My Friends</a>
+
+          <div id="Demo2" class="w3-hide w3-container">
+
+            <p>Some other text..</p>
+          </div>
+          {% comment %}
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-image fa-fw w3-margin-right"></i> My Photos</button>
+          {% endcomment %}
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding">
+         <br>
+           <div class="w3-half">
+             <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+         </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <!-- Interests -->
+      {% comment %}
+      <div class="w3-card-2 w3-round w3-white w3-hide-small">
+        <div class="w3-container">
+          <p>Interests</p>
+          <p>
+            <span class="w3-tag w3-small w3-theme-d5">News</span>
+          </p>
+        </div>
+      </div>
+      {% endcomment %}
+      <br>
+
+
+    <!-- End Left Column -->
+    {% endif %}
+    </div>
+      
+
+
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}
+
+{% block middle-column %}
+ <div class="w3-col m7">
+
+    
+
+{% if comments.items|length == 0%}
+<label style="font-weight: bold; font-size: 120%; padding:2%"> {{profile_other.first_name}} {{profile_other.last_name}} doesn't have any post </label>
+{% else %}
+<div style="padding-left:2%">
+
+
+
+ {% for i, v in comments.items %}
+
+        <div data="{{i.id}}" class="post-bar w3-container w3-card-2 w3-white w3-round w3-padding"><br>
+        <img src="{{i.owner.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="max-width:60px; max-height:60px">
+        <span class="w3-right w3-opacity">  {% load humanize %} {{i.pub_date | naturaltime }}</span>
+        <h4>{{i.owner.first_name}}</h4><br>
+        <hr class="w3-clear">
+        <p>{{i.text}}</p>
+
+         <button type="button" data="{{i.id}}" class="heart-button btn btn-danger btn-circle" style="
+     margin-bottom: 15px;" data-toggle="modal" data-target="#myModal"> <i class="glyphicon glyphicon-heart"></i><span>  {{i.likes}} </span></button>
+
+
+        {% if i in posts_liked_by_user %}
+          <button type="button" data="{{i.id}}" class="like-button w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Liked</button>
+        {% else %}
+        <button type="button" data="{{i.id}}" class="like-button w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        {% endif %}
+        <button type="button" data="{{i.id}}" class="comment-button w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+        <!-- Comment Box starts here -->
+         <div  data="{{i.id}}" class="comments comment-bar w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+
+             <p contenteditable="true" class="comment_input w3-border w3-padding"></p>
+             <button data="{{i.id}}"type="button" class="comment_submit w3-button w3-theme"><i class="fa fa-pencil"></i>  Comment</button>
+
+              {%for t in v%}
+                <div class="w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+              <img src="{{t.owner.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="max-width:40px; max-height: 40px;">
+            <span class="w3-right w3-opacity">  {% load humanize %} {{t.pub_date | naturaltime }}</span>
+
+             <h6>{{t.owner.first_name}}</h6><br>
+                    <h4>{{t.text}}</h4>
+
+                </div>
+             {% endfor %}
+         </div>
+        <!-- Comment Box ends here -->
+{% endfor %}
+</div>
+
+{% endif %}
+
+
+    
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends "basic_app/course.html" %}
+
+{% block right-column %}
+     {% endblock %}
+
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+
+.h1{
+  font-size: 300%;
+}
+
+.navbar123{
+    margin-bottom: 100px;
+}
+
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.comment-bar{
+     display: none;
+ }
+.hidden{
+     display: none;
+ }
+  .activate{
+      display: block;
+  }
+
+    .comments{
+        margin-top: 0px!important;
+    }
+
+    .remove-bottom-margin{
+    margin-bottom: 0px!important;
+}
+
+</style>
+<body class="w3-theme-l5">
+{% csrf_token %}
+<input type="hidden" name="last_postID" value="{{last_postID}}">
+
+
+ {% block one-row %}
+    {% endblock %}
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+    <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    
+
+
+    <!-- Middle Column -->
+  {% block middle-column %}
+{% if uploaded == "yes"%}
+{{msg}}
+{% endif %}
+  <div class="w3-col m7" style="padding-left: 1%">
+    <div class="h1">Upload Grades</div>
+    <div class="w3-card-2 w3-round w3-white">
+    <div style="padding: 2%">
+       <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label style="width: 13%">Student ID: </label>
+          <input type="text" name = "student_id" style="width: 83%">
+          <br><br>
+          <label style="width: 13%">Exam Type: </label>
+          <select style="width: 83%" name="exam_type">
+            <option value="Quiz 1">Quiz 1</option>
+            <option value="Quiz 2">Quiz 2</option>
+            <option value="Quiz 3">Quiz 3</option>
+            <option value="Quiz 4">Quiz 4</option>
+            <option value="Quiz 5">Quiz 5</option>
+            <option value="Quiz 6">Quiz 6</option>
+            <option value="Quiz 7">Quiz 7</option>
+            <option value="Quiz 8">Quiz 8</option>
+            <option value="Quiz 9">Quiz 9</option>
+            <option value="Quiz 10">Quiz 10</option>
+             <option value="Midterm">Midterm</option>
+            <option value="Test 1">Test 1</option>
+            <option value="Test 2">Test 2</option>
+            <option value="Test 3">Test 3</option>
+            <option value="Final">Final</option>
+        </select>
+          <br><br>
+          <label style="width: 13%">Grade: </label>
+          <input class="date-own" style="width: 83%" type="text" name="grade">
+          <br><br>
+          <button type="submit" class="btn btn-default center-block" style="width: 30%">Submit</button>
+      </form>
+    </div>
+    
+  </div>
+  </div>
+   <!--<div>
+	<div class="w3-col m7">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="class="w3-card-2 w3-round w3-white"g">-->
+
+	
+
+
+    		</div>
+				</div>
+          			</div>
+        </div>
+	</div>
+
+   {% endblock %}
+  <!-- End Grid -->
+  </div>
+
+<!-- End Page Container -->
+</div>
+<br>
+
+
+
+
+</body>
+
+</html>

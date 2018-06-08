@@ -1,0 +1,83 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/friendRequests.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}}
+
+{% block middle-column %}
+
+ <div class="w3-col m7" style="padding-left:1%;">
+
+<label style="font-weight: bold; font-size: 120%;"> Friends ({{friendList|length}}) </label>
+   <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container" style="padding:1%">
+
+                <div height="100%" >
+
+                       {% for member in friendList %}
+                       <div class="w3-col m2" style="float:left;">
+                     <p class="w3-center"><img src="{{member.friend.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                    <p  align="center"> <a href="/profile/{{member.friend.id}}"> {{ member.friend.first_name }} {{ member.friend.last_name }}</a></p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+    </div>
+
+
+   </div>
+
+
+
+
+{% comment %}
+Old friendlist 
+ {% if friendList %}
+ {% for i in friendList %}
+    <div class="w3-col m7" style="float: right; margin-left:5%; margin-right: 10%;">
+
+
+    <div class="w3-card-2 w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Friend</p>
+          <img src="{{i.friend.profile_pic.url}}" alt="Avatar" style="max-width:20%; max-height: 20%;"><br>
+          <span>{{i.friend.email}}</span>
+          <div class="w3-row w3-opacity">
+            <div class="w3-half">
+
+            </div>
+            <div class="w3-half">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+   </div>
+ {% endfor %}
+
+{% else %}
+ <div class="w3-col m7">
+
+
+    <div class="w3-card-2 w3-round w3-white w3-center">
+        <div class="w3-container">
+<h4 style="padding-left: 30px; align-items: center; color: #485F6E;">You Do not have any friends currently</h4>
+             </div>
+          </div>
+        </div>
+{% endif %}
+
+
+{% endcomment %}
+
+ {% endblock %}}  <!--end of middle bloc

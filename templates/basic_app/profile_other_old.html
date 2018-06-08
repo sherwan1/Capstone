@@ -1,0 +1,106 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/search.js' %}"></script>
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}
+
+{% block middle-column %}
+ <div class="w3-col m7">
+
+     <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <div class="w3-col m2">
+                 <img src="{{profile_other.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
+                </div>
+                <div class="w3-col m10">
+                    {{profile_other.first_name}} {{profile_other.last_name}}<hr>
+                </div>
+                 <div class="w3-col m5">
+                  
+                  {% if profile_other.title is not None and profile_other.title != "" %}
+                   <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.title}}
+                {% endif %}
+                {% if profile_other.dept is not None and profile_other.dept != "" %}
+                    ,{{profile_other.dept}} 
+                {% endif %}
+            </p>
+                {% if profile_other.city is not None and profile_other.city != "" %}
+                 <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.city}}
+                {% endif %}
+                {% if profile_other.country is not None and profile_other.country != "" %}
+                    , {{profile_other.country}}
+                {% endif %}
+
+                 </p>
+                 {% if profile_other.dob is not None and profile_other.dob != "" %}
+                 <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.dob}}</p>
+                 {% endif %}
+             </div>
+             <div class="w3-col m5">
+                {% if profile_other.grad_date is not None and profile_other.grad_date != "" %}
+              <p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-text-theme"></i> Graduating in {{profile_other.grad_date}}</p>
+            {% endif %}
+            {% if profile_other.phone is not None and profile_other.phone != "" %}
+            <p><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.phone}}</p>
+          {% endif %}
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{profile_other.email}}</p>
+             </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+ {% for i, v in comments.items %}
+
+        <div data="{{i.id}}" class="post-bar w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="{{i.owner.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="max-width:60px; max-height:60px">
+        <span class="w3-right w3-opacity">  {% load humanize %} {{i.pub_date | naturaltime }}</span>
+        <h4>{{i.owner.first_name}}</h4><br>
+        <hr class="w3-clear">
+        <p>{{i.text}}</p>
+
+         <button type="button" data="{{i.id}}" class="heart-button btn btn-danger btn-circle" style="
+     margin-bottom: 15px;" data-toggle="modal" data-target="#myModal"> <i class="glyphicon glyphicon-heart"></i><span>  {{i.likes}} </span></button>
+
+
+        {% if i in posts_liked_by_user %}
+          <button type="button" data="{{i.id}}" class="like-button w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Liked</button>
+        {% else %}
+        <button type="button" data="{{i.id}}" class="like-button w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        {% endif %}
+        <button type="button" data="{{i.id}}" class="comment-button w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+        <!-- Comment Box starts here -->
+         <div  data="{{i.id}}" class="comments comment-bar w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+
+             <p contenteditable="true" class="comment_input w3-border w3-padding"></p>
+             <button data="{{i.id}}"type="button" class="comment_submit w3-button w3-theme"><i class="fa fa-pencil"></i>  Comment</button>
+
+              {%for t in v%}
+                <div class="w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+              <img src="{{t.owner.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="max-width:40px; max-height: 40px;">
+            <span class="w3-right w3-opacity">  {% load humanize %} {{t.pub_date | naturaltime }}</span>
+
+             <h6>{{t.owner.first_name}}</h6><br>
+                    <h4>{{t.text}}</h4>
+
+                </div>
+             {% endfor %}
+         </div>
+        <!-- Comment Box ends here -->
+{% endfor %}
+
+
+    
+{% endblock %}

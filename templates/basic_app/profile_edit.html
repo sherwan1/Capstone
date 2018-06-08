@@ -1,0 +1,281 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static '/js/profile_edit.js' %}"></script>
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#profile_pic')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+ </script>
+<style>
+    
+    .label_width{
+        width: 18%;
+    }
+    .field_width{
+        width:78%;
+    }
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.xbtn{
+    padding: 0;
+    border: none;
+    background: none;
+    color:red;
+}
+.label_list{
+    font-weight: normal;
+    border: 1px solid black;
+}
+
+.display_button {
+  text-decoration: none;
+  background-color: #3a4b53;
+  color: white;
+  width: 22%;
+  height: 30px;
+}
+
+.header{
+    color: black;
+    
+    font-weight: bold; 
+    font-size: 120%
+}
+</style>
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}
+
+{% block middle-column %}
+
+<div  class="w3-col m7" style="padding-left: 1%">
+    
+    <label class="header" style="font-size: 250%"> Edit Profile</label>
+    <div class="mid_col">
+    <div  id="in_box" class="hidden">
+        
+    </div>
+    <div class="w3-card-2 w3-round w3-white mid_col">
+    <div style="padding: 1%">
+        <div class="center-block" style="text-align: center;">
+      
+       <form method= "post" enctype="multipart/form-data" class="width_full">
+    {% csrf_token %}
+        <label> Profile Picture </label><br>
+        <img id="profile_pic" src="{{profile.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px;" alt="Avatar">
+                    
+<div style="padding-top: 1%">
+  <label  for="image" style="background-color: #3a4b53;" class="btn btn-primary center-block">Upload profile picture </label>
+  <input id="image" style="visibility:hidden;" type="file" name="image" onchange="readURL(this);">
+</div>
+</div>
+
+{% comment %}
+                    <input id="image" type="file" class="" name="image">
+{% endcomment %}
+        
+    
+    <div style="padding-top: 1%">
+        <label class="label_width"> First Name </label>
+        {% if profile.first_name is not None %}
+            <input  class="field_width" type="text" name="first_name" value="{{profile.first_name}}">
+        {% else %}
+            <input  class="field_width" type="text" name="first_name" >
+        {% endif %}
+        <label class="label_width"> Last Name</label>
+        {% if profile.last_name is not None %}
+            <input  class="field_width" type="text" name="last_name" value="{{profile.last_name}}">
+        {% else %}
+            <input  class="field_width" type="text" name="last_name">
+        {% endif %}
+    
+
+
+    
+        <label class="label_width"> Date of Birth</label>
+        {% if profile.dob is not None %}
+            <input   class="field_width" name="dob" type="text" value="{{profile.dob}}">
+        {% else %}
+            <input  class="field_width" name="dob" type="text">
+        {% endif %}
+    
+
+
+    
+        <label class="label_width"> Discipline</label>
+        {% if profile.discipline is not None %}
+            <input   class="field_width" name="discipline" type="text" value="{{profile.discipline}}">
+        {% else %}
+            <input  class="field_width" name="discipline" type="text">
+        {% endif %}
+        <label class="label_width"> Started</label>
+
+        {% if profile.start_date is not None %}
+            <input  class="field_width" name="start_date" type="text" value="{{profile.start_date}}">
+        {% else %}
+            <input  class="field_width" name="start_date" type="text">
+        {% endif %}
+        <label class="label_width"> Title</label>
+        <input  class="field_width" name="title" type="text" value="{{profile.title|default_if_none:""}}">
+        <label class="label_width"> Graduation Date</label>
+        <input  class="field_width" name="grad_date" type="text" value='{{profile.grad_date|default_if_none:""}}'>
+
+    
+
+    
+        <label class="label_width"> City</label>
+        <input  class="field_width" name="city" type="text" value="{{profile.city|default_if_none:""}}">
+        <label class="label_width"> Province/State</label>
+        <input  class="field_width" name="province" type="text" value="{{profile.province|default_if_none:""}}">
+        <label class="label_width"> Country</label>
+        <input  class="field_width" name="country" type="text" value="{{profile.country|default_if_none:""}}">
+    
+
+    
+        <label class="label_width"> Phone </label>
+        <input  class="field_width" name="phone"type="text" value="{{profile.phone|default_if_none:""}}">
+
+        <label class="label_width"> Contact Email</label>
+        <input  class="field_width"  name="contact_email" type="email" value="{{profile.email|default_if_none:""}}"><br><br>
+
+    
+        
+         {% comment %}
+            
+            <div class="w3-card-2" style="padding:2%">
+
+                <div id="interest_list">
+             <label> Interests</label><br>
+
+
+                {% for interest in profile.getInterests %}
+                    <label class="label_list"  id="interest{{forloop.counter0}}"> {{interest}}</label><button type="button" data-toggle="tooltip" title="Remove interest" class="interest_rem xbtn" id="interest_rem{{forloop.counter0}}"> x</button>
+                {% endfor %}
+
+            </div>
+
+                <div style="padding-left: 10%">
+                   
+                    <input  style="width:70%" type="text" id="interests_in">
+                    <button  type="button" id="interests_add"> Add interest </button>
+                    
+                </div>
+            </div>
+            
+            <button type="button" id="int_add"> Add Interest </button>
+        
+           
+            
+            </div>
+        <input name="interests" id="interests" class="hidden field_width" type="text" value="{{profile.interests}}">
+
+
+    
+
+
+
+   <div class="courses" style="padding:1%;width:100%">
+        <p id="course_list">
+        <label> Courses Taken</label>
+
+
+            {% for course in profile.getCourses %}
+                <label style="padding-left:1%;" id="course{{forloop.counter0}}"> {{course}}</label><button type="button" data-toggle="tooltip" title="Remove course" class="course_rem" id="course_rem{{forloop.counter0}}"> X</button>
+            {% endfor %}
+
+            </p>
+
+        <input type="text" id="courses_in"><button type="button" id="courses_add"> Add Interest </button>
+        <input name="courses" id="courses" class="hidden" type="text" value="{{profile.courses}}">
+    </div>
+{% endcomment %}
+    <button style="background-color: #3a4b53; color: white;" class="btn display_button center-block"> Save</button>
+</div>
+
+
+
+</form>
+    </div>
+    
+    </div>
+  </div>
+
+ </div>
+
+ </div>   
+
+    
+{% endblock %}
+
+
+<script>
+
+
+
+
+</script>
+
+
+

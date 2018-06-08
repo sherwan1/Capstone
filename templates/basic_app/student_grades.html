@@ -1,0 +1,174 @@
+{% extends "basic_app/course.html" %}
+
+{% block right-column %}
+     {% endblock %}
+
+
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+
+.h1{
+  font-size: 300%;
+}
+
+.navbar123{
+    margin-bottom: 100px;
+}
+
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.comment-bar{
+     display: none;
+ }
+.hidden{
+     display: none;
+ }
+  .activate{
+      display: block;
+  }
+
+    .comments{
+        margin-top: 0px!important;
+    }
+
+    .remove-bottom-margin{
+    margin-bottom: 0px!important;
+}
+
+</style>
+<body class="w3-theme-l5">
+{% csrf_token %}
+<input type="hidden" name="last_postID" value="{{last_postID}}">
+
+
+ {% block one-row %}
+    {% endblock %}
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+    <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+   
+
+
+    <!-- Middle Column -->
+  {% block middle-column %}
+
+  <div class="w3-col m7" style="padding-left: 1%">
+    <div class="h1">My Grades</div>
+    <div class="w3-card-2 w3-round w3-white">
+    <div style="padding: 2%">
+      {% for grade in grades %}
+          <label style="width: 13%; font-size: 150%" >{{ grade.exam_type }}:</label>
+          <label style="width: 13%; font-size: 150%">Grade: {{grade.grade}}%</label>
+          <br><br>
+        {% endfor %}
+    </div>
+    
+  </div>
+  </div>
+  
+    		</div>
+				</div>
+          			</div>
+        </div>
+	</div>
+
+   {% endblock %}
+  <!-- End Grid -->
+  </div>
+
+<!-- End Page Container -->
+</div>
+<br>
+
+{% block chatbox %}
+    <div id="chat-button123"><img id="chat-box-img" src="{% static '/images/chat-button-new.jpg' %}"> </div>
+	<div class="container w3layouts agileits">
+
+		<div id="chatbox">
+
+			<div id="friendslist">
+                <span id="pull-down-chat-bar" style="color: gold; font-size: 35px;  padding-left:10%;" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+
+				<div id="topmenu">
+                    <span class="friends">FRIENDS</span>
+				</div>
+
+				<div id="friends">
+
+                     {% for i in friendList %}
+                     <div class="friend w3layouts" person="{{i.friend.email}}">
+						<img class="friend_image" src="{{i.friend.profile_pic.url}}">
+						<p>
+							<strong>{{i.friend.name}}</strong>
+							<span>{{i.friend.email}}</span>
+						</p>
+						<div class="status inactive" person="{{i.friend.email}}"></div>
+					</div>
+                    {%endfor%}
+
+
+				</div>
+
+                <div id="search">
+						<input type="text" id="searchfield" value="Search contacts...">
+                </div>
+
+			</div>
+
+
+
+			<div id="chatview" class="p1">
+
+				<div id="profile">
+					<div id="close">
+						<div class="cy"></div>
+						<div class="cx"></div>
+					</div>
+					<p>Bucky Barnes</p>
+					<span>wintersoldier@gmail.com</span>
+				</div>
+
+
+                       {% for i in friendList %}
+                         <div class="chatmessages hidden1" data-person="{{i.friend.email}}">
+                                <label>Today</label>
+                         </div>
+                         <div class="endOfMsg"></div>
+
+                    {%endfor%}
+
+
+
+
+				<div id="sendmessage">
+					<input type="text" value="Send message...">
+					<button id="send"></button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+   {% endblock %}
+
+
+
+</body>
+
+</html>

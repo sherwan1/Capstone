@@ -1,0 +1,45 @@
+
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/search.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+
+
+
+    <!-- Middle Column -->
+    {% block middle-column %}
+  
+
+    <div>
+	<div class="w3-col m7" style="padding-left: 1%">
+    <div class="h1">Create Group</div>
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <div style="padding: 2%">
+   
+	<form action="/group_create" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+		<label style="width: 15%; font-weight: bold; font-size: 120%">Group Name:</label>
+		<input type="text" name = "name" style="width: 83%;"><br><br>
+		<label style="width: 15%; font-weight: bold; font-size: 120%;">Information:</label>
+		<input type="text" name = "description" style="width: 83%;"><br><br>
+    <label for="image" style="width: 15%; font-weight: bold; font-size: 120%;"> Profile Picture:</label>
+    <input id="image" type="file" name="image"><br><br>
+		<button type="submit" style="color: white; background-color: #3a4b53; width: 30%" class="btn btn-default center-block">Submit</button>
+	</form>
+
+		</div>
+    		</div>
+				</div>
+          			</div>
+        </div>
+	</div>
+
+   {% endblock %}
+ 

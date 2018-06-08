@@ -1,0 +1,64 @@
+{% extends "basic_app/group.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/friendRequests.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}}
+
+{% block middle-column %}
+
+
+     <div class="w3-col m7" style="padding-left:1%;">
+
+
+
+
+                <div height="100%" >
+
+                  <div class="w3-card-2 w3-round w3-white">
+                    <div style="padding:1%;">
+                      <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                  
+                  <label for="file" style="width: 15%; font-weight: bold; font-size: 120%;"> Upload File:</label>
+                 <input w3-border w3-padding type="file" name="file" id="file"><span style="background-color: black"></span>
+                 
+                  <button type="submit" style="color: white; background-color: #3a4b53; width: 30%" class="btn btn-default center-block">Upload</button>
+            </form>
+          </div>
+          </div>
+
+                    <br>
+            {% if files|length != 0 %}
+                    <label style="width: 15%; font-weight: bold; font-size: 120%;">Files </label>
+                    <div class="w3-card-2 w3-round w3-white">
+    <div class="w3-container" style="padding:1%">
+
+        {% for f in files %}
+         <a href="{{f.file.url}}" download style="font-weight: bold; font-size: 120%;"> {{f.file.url|slice:"13:"}}</a> <br>
+        {% endfor %}
+    </div>
+
+</div>
+              {% else %}
+              <label style="font-weight: bold; font-size: 120%;">Currently there are no files </label>
+              {% endif %}
+
+    </div>
+
+
+   </div>
+
+
+
+
+ {% endblock %}}  <!--end of middle bloc
+
+
+

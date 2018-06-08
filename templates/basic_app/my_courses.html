@@ -1,0 +1,112 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+<script type="text/javascript" src="{% static '/js/search.js' %}"></script>
+
+<style>
+.list-font{
+    font-size: medium;
+    color: black;
+  }
+  .create_button{
+    font-size: large;
+  }
+
+  .panel-primary{
+  color: white;
+  background-color: #6a93a7;
+  font-family: Calibri;
+  font-size: 120%;
+}
+
+.panel-description{
+  font-family: Calibri;
+   font-size: 120%;
+   color:black;
+}
+
+._hover:hover  *{
+    background-color:#e6e6ff;
+    color: black;
+  }
+</style>
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}
+
+
+    <!-- Middle Column -->
+    {% block middle-column %}
+
+     <div class="w3-col m7">
+     {% if profile.account_type == "Instructor" %}
+
+      <a style="margin:2%" href="/course_new" class="create_button">Create Course</a>
+      {% else %}
+    
+     {% endif %}
+      <div style="margin-top:0.5%"" class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <div style="margin-top: 1%; margin-bottom:1%">
+             	{% for course in courses %}
+               {% if course.course.code != "" %}
+               <a  href="/course/{{course.course.id}}" style="text-decoration: none">
+                <div class="_hover">
+                  
+                  
+                    
+                  <div class="panel-group ">
+                    <div class="panel panel-primary ">
+                          <div class="group_name panel-body ">Course Code: {{course.course.code}}</div>
+                    </div>
+                  
+                      <div class="panel-body panel-description ">Name: {{course.course.name}}</div>
+                  
+              
+                  </div>
+                </div>
+              </a>
+              {% endif %}
+              {% comment %}
+					<p><a href="/course/{{course.course.id}}" style="font-size: 125% color: black;"><li>{{course.course.code}}: {{course.course.name}}</li></a></p>
+
+          {% if course.course.code != "" %}
+              <a  class="list-group-item" href="/course/{{course.course.id}}">
+                <div class = "list-font" style="font-family:Calibri">
+                    Course Code: {{course.course.code}} <br>Name: {{course.course.name}}
+                </div>
+                 </a>
+          {% endif %}
+          {% endcomment %}
+
+          
+				{%endfor %}
+      </div>
+             <!-- <textarea id="post_input" class="w3-border w3-padding" rows="3" cols="60">    </textarea> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+   {% endblock %}
+  <!-- End Grid -->
+  </div>
+
+<!-- End Page Container -->
+</div>
+<br>
+
+
+
+
+</body>
+</html>

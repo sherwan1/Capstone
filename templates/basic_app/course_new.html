@@ -1,0 +1,178 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+<script type="text/javascript" src="{% static '/js/search.js' %}"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}
+
+
+
+
+
+    <!-- Middle Column -->
+    {% block middle-column %}
+
+   
+  <div class="w3-col m7" style="padding-left: 1%">
+    <div class="h1">Create Course</div>
+    <div class="w3-card-2 w3-round w3-white">
+    <div style="padding: 2%">
+       <form action="/course_create" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label style="width: 13%">Course Code: </label>
+          <input type="text" name = "course_code" style="width: 83%">
+          <br><br>
+          <label style="width: 13%">Course Name: </label>
+          <input type="text" name = "course_name" style="width: 83%">
+          <br><br>
+          <label style="width: 13%">Description: </label>
+          <input type="text" name = "description" style="width: 83%">
+          <br><br>
+          <label style="width: 13%">Term: </label>
+          <select style="width: 83%" name="term">
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
+            <option value="Summer">Summer</option>
+        </select>
+          <br><br>
+          <label style="width: 13%">Year: </label>
+          <input class="date-own" style="width: 83%" type="text" name="year">
+          <script type="text/javascript">
+            $(".date-own").datepicker({
+            minViewMode: 2,
+            format: "yyyy"
+          });
+          </script>
+          <br><br>
+          <label style="width: 13%">Lecture Section: </label>
+          <input type="text" name = "lecture_section" style="width: 83%">
+          <br><br>
+          <label style="width: 13%">Office Hours: </label>
+          <input type="text" name = "office_hours" style="width: 83%">
+          <br><br>
+          <label style="width: 13%">Office Location: </label>
+          <input type="text" name = "office_location" style="width: 83%">
+          <br><br>
+          <button type="submit" class="btn btn-default center-block submit_button" style="width: 30%;">Submit</button>
+      </form>
+    </div>
+    
+  </div>
+  </div>
+   <!--<div>
+	<div class="w3-col m7">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="class="w3-card-2 w3-round w3-white"g">-->
+
+	
+
+
+    		</div>
+				</div>
+          			</div>
+        </div>
+	</div>
+
+   {% endblock %}
+  <!-- End Grid -->
+  </div>
+
+<!-- End Page Container -->
+</div>
+<br>
+
+{% block chatbox %}
+    <div id="chat-button123"><img id="chat-box-img" src="{% static '/images/chat-button-new.jpg' %}"> </div>
+	<div class="container w3layouts agileits">
+
+		<div id="chatbox">
+
+			<div id="friendslist">
+                <span id="pull-down-chat-bar" style="color: gold; font-size: 35px;  padding-left:10%;" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+
+				<div id="topmenu">
+                    <span class="friends">FRIENDS</span>
+				</div>
+
+				<div id="friends">
+
+                     {% for i in friendList %}
+                     <div class="friend w3layouts" person="{{i.friend.email}}">
+						<img class="friend_image" src="{{i.friend.profile_pic.url}}">
+						<p>
+							<strong>{{i.friend.name}}</strong>
+							<span>{{i.friend.email}}</span>
+						</p>
+						<div class="status inactive" person="{{i.friend.email}}"></div>
+					</div>
+                    {%endfor%}
+
+
+				</div>
+
+                <div id="search">
+						<input type="text" id="searchfield" value="Search contacts...">
+                </div>
+
+			</div>
+
+
+
+			<div id="chatview" class="p1">
+
+				<div id="profile">
+					<div id="close">
+						<div class="cy"></div>
+						<div class="cx"></div>
+					</div>
+					<p>Bucky Barnes</p>
+					<span>wintersoldier@gmail.com</span>
+				</div>
+
+
+                       {% for i in friendList %}
+                         <div class="chatmessages hidden1" data-person="{{i.friend.email}}">
+                                <label>Today</label>
+                         </div>
+                         <div class="endOfMsg"></div>
+
+                    {%endfor%}
+
+
+
+
+				<div id="sendmessage">
+					<input type="text" value="Send message...">
+					<button id="send"></button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+   {% endblock %}
+
+<!-- Footer -->
+ {% block footer %}
+
+   {% endblock %}
+
+
+</body>
+
+</html>

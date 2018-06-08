@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+<html>
+<title>Social Media Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
+
+	<!-- //For-Mobile-Apps -->
+
+	<!-- Style -->
+
+	<!-- Web-Fonts -->
+		<link href='//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
+		<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+	<!-- //Web-Fonts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+{% endblock %}
+
+
+
+
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: 'ABeeZee', sans-serif; font-size: 17px;}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.navbar-inverse{
+    background-color: #1a4775;
+    color: white;
+}
+.navbar-brand{
+    background-color: #1a4775;
+    color: white;
+}
+.navbar123{
+    margin-bottom: 100px;
+}
+
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.comment-bar{
+     display: none;
+ }
+.hidden{
+     display: none;
+ }
+  .activate{
+      display: block;
+  }
+
+    .comments{
+        margin-top: 0px!important;
+    }
+
+    .remove-bottom-margin{
+    margin-bottom: 0px!important;
+}
+
+
+#image_form {
+  width: 100%;
+  background: white;
+  margin: 0 auto;
+  padding: 0px;
+  border: 0px solid black;
+}
+
+#image_form > ol {
+  padding-left: 0;
+}
+
+#image_form > li {
+  background: #eee;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  list-style-type: none;
+  border: 1px solid black;
+}
+
+#image_form > img {
+  max-height: 64px;
+  max-width: 64px;
+  order: 1;
+}
+
+#image_form > p {
+  line-height: 32px;
+  padding-left: 10px;
+}
+
+#image_form > label, #image_form > button {
+  background-color: #7F9CCB;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px ridge black;
+  font-size: 0.8rem;
+  height: auto;
+}
+
+#image_form > label:hover, #image_form  > button:hover {
+  background-color: #2D5BA3;
+  color: white;
+}
+
+#image_form > label:active, #image_form > button:active {
+  background-color: #0D3F8F;
+  color: white;
+}
+
+.submit_button{
+background-color: #3a4b53;
+color:white;
+
+}
+
+#image_uploads{
+    display: none;
+    }
+
+/*********************************These styles are for the youtube popup box****************************/
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: 80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+/*********************************End of styles for the youtube popup box****************************/
+
+</style>
+
+
+
+<body class="w3-theme-l5">
+{% csrf_token %}
+<input type="hidden" name="last_postID" value="{{last_postID}}">
+
+ {% block navbar %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a href="/profile" class="navbar-brand "><i class="fa fa-home w3-margin-right"></i>{{profile.first_name}} {{profile.last_name}}</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar" style="font-size: large; color: white">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle glyphicon glyphicon-globe" data-toggle="dropdown" href="#"> Notifications <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li><a href="/messages" class="glyphicon glyphicon-envelope" title="Messages">{%if notification%}<span class="w3-badge w3-right w3-small w3-green">{{notification.count}}</span>{%endif%} Messages</a></li>
+
+           <form class="navbar-form navbar-left" action="/search">
+              <div class="input-group">
+               <input type="text" class="form-control" placeholder="Search" name="query">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </div>
+              </div>
+           </form>
+
+
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}
+
+ {% block one-row %}
+    {% endblock %}
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+    <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+     {% block left-column %}
+    <div class="w3-col m3">
+      <!-- Profile -->
+     <div class="w3-card-2 w3-round w3-white">
+        <div class="w3-container">
+          <a  href="/profile_edit" class="glyphicon glyphicon-pencil w3-right"></a>
+         <h4 id="profile_name1" class="w3-center">{{profile.first_name}} {{profile.last_name}}</h4>
+         <h4 id="profile_id1" hidden> {{profile.id}}</h4>
+
+            <p class="w3-center"><img id="profile_pic1" src="{{profile.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+
+
+         <hr>
+          {% if profile.title is not None and profile.title != "" %}
+                   <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{profile.title}}
+                {% endif %}
+                {% if profile.dept is not None and profile.dept != "" %}
+                    ,{{profile.dept}} 
+                {% endif %}
+            </p>
+            {% if profile.discipline is not None and profile.discipline != "" %}
+                   <p><i class="fa fa-university fa-fw w3-margin-right w3-text-theme"></i> {{profile.discipline}}
+                {% endif %}
+                {% if profile.dept is not None and profile.dept != "" %}
+                    ,{{profile.dept}} 
+                {% endif %}
+            </p>
+          {% if profile.city is not None and profile.city != "" %}
+                 <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{profile.city}}
+                {% endif %}
+                {% if profile.country is not None and profile.country != "" %}
+                    , {{profile.country}}
+                {% endif %}
+
+                 </p>
+          {% if profile.dob is not None and profile.dob != "" %}
+                 <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.dob}}</p>
+                 {% endif %}
+
+         {% if profile.grad_date is not None and profile.grad_date != "" %}
+              <p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-text-theme"></i> Graduating in {{profile.grad_date}}</p>
+            {% endif %}
+          {% if profile.phone is not None and profile.phone != "" %}
+            <p><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{profile.phone}}</p>
+          {% endif %}
+             <p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{profile.email}}</p>
+          
+        </div>
+      </div>
+      <br>
+
+      <!-- Accordion -->
+      <div class="w3-card-2 w3-round">
+        <div class="w3-white">
+          <a href = '/my_groups' class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</a>
+          <div id="Demo1" class="w3-hide w3-container">
+            <p>Some text..</p>
+          </div>
+          <a href = '/my_courses' class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-pencil fa-fw w3-margin-right"></i> My Courses</a>
+
+         {% block friend %}
+          <a href="/friendRequests" class="w3-button w3-block w3-theme-l1 w3-left-align"><i><span id="friendRequests" class="w3-badge w3-left w3-small w3-green "> {{ req|length }}</span></i>     Friend Requests</a>
+           {% endblock %}
+           <a href="/friendList" class="w3-button w3-block w3-theme-l1 w3-left-align"> <i class="fa fa-users fa-fw w3-margin-right"></i>My Friends</a>
+
+          <div id="Demo2" class="w3-hide w3-container">
+
+            <p>Some other text..</p>
+          </div>
+          {% comment %}
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-image fa-fw w3-margin-right"></i> My Photos</button>
+          {% endcomment %}
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding">
+         <br>
+
+
+
+         </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <!-- Interests -->
+      {% comment %}
+      <div class="w3-card-2 w3-round w3-white w3-hide-small">
+        <div class="w3-container">
+          <p>Interests</p>
+          <p>
+            <span class="w3-tag w3-small w3-theme-d5">News</span>
+          </p>
+        </div>
+      </div>
+      {% endcomment %}
+      <br>
+
+
+    <!-- End Left Column -->
+    </div>
+    {% endblock %}
+
+
+    <!-- Middle Column -->
+     {% block middle-column %}
+    <div class="w3-col m7">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">What's on your mind ?</h6>
+              <p contenteditable="true" class="post_input w3-border w3-padding"></p>
+             <!-- <textarea id="post_input" class="w3-border w3-padding" rows="3" cols="60">    </textarea> -->
+
+                <div class="popup"><span class="popuptext" id="myPopup"><input id="video_url" placeholder="Enter Youtube url here" style="color: black;height: 32px;" type="text" name="video_url"><button type="button" class="video_ok btn btn-success glyphicon glyphicon-ok"></button><button type="button" class="video_remove btn btn-danger glyphicon glyphicon-remove"></button></span></div>
+
+                <label for="image_uploads" class="image_upload w3-button w3-theme"><i class="fa fa-image"></i> Attach Image</label>
+                <button type="button" class="yt-button btn btn-danger btn-circle"><i class="glyphicon glyphicon-facetime-video"></i> Embed Youtube</button>
+                <button type="button" class="post_submit w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+
+                	 <form id="image_form" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+
+
+                          <div>
+                              <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+                          </div>
+                          <div class="preview">
+
+                          </div>
+
+
+                     </form>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+        <!-- Top Div starts here -->
+        <div id="Top">
+
+
+        </div>
+     <!-- Top div ends here -->
+
+
+
+     {% for i, v in comments.items %}
+
+        <div data="{{i.id}}" class="post-bar w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="{{i.owner.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="max-width:50px; max-height:50px">
+        <span class="w3-right w3-opacity">  {% load humanize %} {{i.pub_date | naturaltime }}</span>
+        <a href="/profile/{{i.owner.id}}" style="font-weight: bold;">{{i.owner.first_name}} {{i.owner.last_name}}</a><br>
+        <hr class="w3-clear">
+        <p>{{i.text}}</p>
+
+            <br>
+
+            {% if i.video_url %}
+            <iframe width="100%" height="400" src="{{i.video_url}}"
+            allowfullscreen="allowfullscreen"
+            mozallowfullscreen="mozallowfullscreen"
+            msallowfullscreen="msallowfullscreen"
+            oallowfullscreen="oallowfullscreen"
+            webkitallowfullscreen="webkitallowfullscreen">
+            </iframe>
+
+            {% endif %}
+
+            {% if i.post_photo_directory %}
+            
+
+
+
+            {% for key, links in photo_links.items %}
+
+            {% if key == i %}
+            {% for link in links %}
+             <div class="w3-row-padding" style="margin:0 -16px">
+
+                      <img src="{{link.url_link}}" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                   
+             </div>
+
+            {% endfor%}
+
+            {% endif%}
+
+
+            {% endfor%}
+
+            {% endif%}
+
+
+         <button type="button" data="{{i.id}}" class="heart-button btn btn-danger btn-circle" style="
+     margin-bottom: 15px;" data-toggle="modal" data-target="#myModal"> <i class="glyphicon glyphicon-heart"></i><span class="likes_count" data="{{i.id}}">  {{i.likes}} </span></button>
+
+
+        {% if i in posts_liked_by_user %}
+          <button type="button" data="{{i.id}}" class="like-button w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i><span>   Liked</span></button>
+        {% else %}
+        <button type="button" data="{{i.id}}" class="like-button w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i><span>  Like</span></button>
+        {% endif %}
+        <button type="button" data="{{i.id}}" class="comment-button w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+        <!-- Comment Box starts here -->
+         <div  data="{{i.id}}" class="comments comment-bar w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+
+             <p contenteditable="true" class="comment_input w3-border w3-padding"></p>
+             <button data="{{i.id}}"type="button" class="comment_submit w3-button w3-theme"><i class="fa fa-pencil"></i>  Comment</button>
+
+             <div class="comments_section" data="{{i.id}}">
+              {%for t in v%}
+                <div class="w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+              <img src="{{t.owner.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="max-width:40px; max-height: 40px;">
+            <span class="w3-right w3-opacity">  {% load humanize %} {{t.pub_date | naturaltime }}</span>
+
+             <a href="/profile/{{t.owner.id}}" style="font-weight: bold;">{{t.owner.first_name}} {{t.owner.last_name}}</a><br>
+                    <h4>{{t.text}}</h4>
+
+                </div>
+             {% endfor %}
+                 </div>
+         </div>
+        <!-- Comment Box ends here -->
+{% endfor %}
+
+         <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Post Liked by</h4>
+        </div>
+        <div class="modal-body">
+          <div class="people_list">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <!--  <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">16 min</span>
+        <h4>Jane Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+      <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">32 min</span>
+        <h4>Angie Jane</h4><br>
+        <hr class="w3-clear">
+        <p>Have you seen this?</p>
+        <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div> -->
+
+    <!-- End Middle Column -->
+    </div>
+    {% endblock %}
+
+    {% block right-column %}
+
+    {% endblock %}
+
+  <!-- End Grid -->
+  </div>
+
+<!-- End Page Container -->
+</div>
+<br>
+
+{% block chatbox %}
+    <div id="chat-button123"><img id="chat-box-img" src="{% static '/images/chat-button-new.jpg' %}"> </div>
+    <input id="profile_pic123" type="hidden" name="profile_pic" value="{{friendList.0.creator.profile_pic.url}}">
+
+    <div class="container w3layouts agileits">
+
+		<div id="chatbox">
+
+			<div id="friendslist">
+                <span id="pull-down-chat-bar" style="color: gold; font-size: 35px;  padding-left:10%;" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+
+				<div id="topmenu">
+                    <span class="friends">FRIENDS</span>
+				</div>
+
+				<div id="friends">
+
+                     {% for i in friendList %}
+                     <div class="friend w3layouts" person="{{i.friend.email}}">
+						<img class="friend_image" src="{{i.friend.profile_pic.url}}">
+						<p>
+							<strong>{{i.friend.name}}</strong>
+							<span>{{i.friend.email}}</span>
+						</p>
+						<div class="status inactive" person="{{i.friend.email}}"></div>
+					</div>
+
+                    {%endfor%}
+
+
+				</div>
+
+                <div id="search">
+						<input type="text" id="searchfield" value="Search contacts...">
+                </div>
+
+			</div>
+
+
+
+			<div id="chatview" class="p1">
+
+				<div id="profile">
+					<div id="close">
+						<div class="cy"></div>
+						<div class="cx"></div>
+					</div>
+					<p>Bucky Barnes</p>
+					<span>wintersoldier@gmail.com</span>
+				</div>
+
+
+                       {% for i in friendList %}
+                         <div class="chatmessages hidden1" data-person="{{i.friend.email}}">
+                                <label>Today</label>
+                         </div>
+                         <div class="endOfMsg"></div>
+
+                    {%endfor%}
+
+
+
+
+				<div id="sendmessage">
+					<input type="text" value="Send message...">
+					<button id="send"></button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+   {% endblock %}
+
+<!-- Footer -->
+ {% block footer %}
+
+   {% endblock %}
+
+
+</body>
+</html>

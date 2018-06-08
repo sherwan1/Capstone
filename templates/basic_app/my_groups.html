@@ -1,0 +1,190 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+<script type="text/javascript" src="{% static '/js/search.js' %}"></script>
+<style>
+.panel-primary{
+  color: white;
+  background-color: #6a93a7;
+  font-family: Calibri;
+  font-size: 120%;
+}
+
+.panel-description{
+  font-family: Calibri;
+   font-size: 120%;
+   color:black;
+}
+	.list-font{
+		
+   font-size: medium;
+    color: black;
+	}
+  .create_button{
+    font-size: large;
+  }
+  ._hover:hover  *{
+    background-color:#e6e6ff;
+    color: black;
+  }
+</style>
+
+{% endblock %}
+
+ <div class="container">
+
+{% block right-column %}
+     {% endblock %}
+
+
+
+ 
+
+
+    <!-- Middle Column -->
+    {% block middle-column %}
+  
+     <div class="w3-col m7">
+        <a style="margin:2%" href="/group_new" class="create_button">Create Group</a>
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+              
+              <div style="margin: 1% margin-bottom:1%">
+             	{% for group in groups%}
+             	{% if group.group.name != "" %}
+              <a  href="/group/{{group.group.id}}" style="text-decoration: none">
+                <div class="_hover">
+                  <div class="w3-col m2 ">
+                    <img src="{{group.group.image.url}}" class="w3-circle " style="height:112px;width:114px" alt="Avatar">
+                  </div>
+                  <div class="w3-col m10 ">
+                    
+                  <div class="panel-group ">
+                    <div class="panel panel-primary ">
+                          <div class="group_name panel-body ">Group Name: {{group.group.name}}</div>
+                    </div>
+                  
+                      <div class="panel-body panel-description ">Information: {{group.group.description}}</div>
+                  
+                  </div>
+               </div>
+              </a>
+            
+            </div>
+ 
+              {% comment %}
+             	<a  class="list-group-item" href="/group/{{group.group.id}}">
+             		<div class = "list-font" style="font-family: Calibri" >
+                   Group Name: {{group.group.name}} <br>
+                   Information: {{group.group.description}}
+                </div>
+                 </a>
+            {% endcomment %}
+
+
+				{% endif %}
+	
+				{%endfor %}
+      </div>
+             <!-- <textarea id="post_input" class="w3-border w3-padding" rows="3" cols="60">    </textarea> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+   {% endblock %}
+  <!-- End Grid -->
+  </div>
+
+<!-- End Page Container -->
+</div>
+<br>
+
+{% block chatbox %}
+    <div id="chat-button123"><img id="chat-box-img" src="{% static '/images/chat-button-new.jpg' %}"> </div>
+	<div class="container w3layouts agileits">
+
+		<div id="chatbox">
+
+			<div id="friendslist">
+                <span id="pull-down-chat-bar" style="color: gold; font-size: 35px;  padding-left:10%;" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+
+				<div id="topmenu">
+                    <span class="friends">FRIENDS</span>
+				</div>
+
+				<div id="friends">
+
+                     {% for i in friendList %}
+                     <div class="friend w3layouts" person="{{i.friend.email}}">
+						<img class="friend_image" src="{{i.friend.profile_pic.url}}">
+						<p>
+							<strong>{{i.friend.name}}</strong>
+							<span>{{i.friend.email}}</span>
+						</p>
+						<div class="status inactive" person="{{i.friend.email}}"></div>
+					</div>
+
+                    {%endfor%}
+
+
+				</div>
+
+                <div id="search">
+						<input type="text" id="searchfield" value="Search contacts...">
+                </div>
+
+			</div>
+
+
+
+			<div id="chatview" class="p1">
+
+				<div id="profile">
+					<div id="close">
+						<div class="cy"></div>
+						<div class="cx"></div>
+					</div>
+					<p>Bucky Barnes</p>
+					<span>wintersoldier@gmail.com</span>
+				</div>
+
+
+                       {% for i in friendList %}
+                         <div class="chatmessages hidden1" data-person="{{i.friend.email}}">
+                                <label>Today</label>
+                         </div>
+                         <div class="endOfMsg"></div>
+
+                    {%endfor%}
+
+
+
+
+				<div id="sendmessage">
+					<input type="text" value="Send message...">
+					<button id="send"></button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+   {% endblock %}
+
+<!-- Footer -->
+ {% block footer %}
+
+   {% endblock %}
+
+</div>
+</body>
+</html>

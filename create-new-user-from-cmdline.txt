@@ -1,0 +1,167 @@
+In order to create a new user from django shell:
+Run the below commands from
+
+> python manage.py shell
+
+import bcrypt
+
+from basic_app.models import TempUser , Profile, Post, TempFriendRequest, Friendship, Comment
+
+secret_key = 'Thisisasecretkey12301902qsd90hwqeuy230489h'
+
+first_name="john"
+last_name="123"
+email=first_name + "@" + first_name + ".com" 
+username=email
+password=first_name
+
+print("plain text password is "+ password)
+    
+password_salt= bcrypt.gensalt()   
+print ("Gensalt is "+ password_salt)
+password = bcrypt.hashpw((password+secret_key).encode('UTF-8'), password_salt)
+
+print("One time hashed password is "+ password)
+
+new_user = Profile(first_name = first_name,last_name=last_name,username=username,email=email, password_salt=password_salt)
+new_user.set_password(password) #storing the password in the database
+new_user.save()
+  
+print("2 time hashed password is "+ new_user.password)  
+
+
+ <!--
+             {% for t in comments.post %}
+                <div class="post-bar w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+                    <span class="w3-right w3-opacity">1 min</span>
+                    <h4>{{t.owner.first_name}}</h4><br>
+                    <hr class="w3-clear">
+                    <p>{{t.text}}</p>
+
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                    <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Reply</button>
+                  </div>
+
+             {% endfor %}  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             {% for post, comm in comments.items %}
+       
+        <div data="{{i.id}}" class="post-bar w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>{{post.owner.first_name}}</h4><br>
+        <hr class="w3-clear">
+        <p>{{post.text}}</p>
+          
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <button data="{{i.id}}" type="button" class="comment-button w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+        <!-- Comment Box starts here -->
+         <div id="comments" data="{{i.id}}" class="comment-bar w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+            <p id="comment_input" contenteditable="true" class="w3-border w3-padding"></p>
+             <button id="comment_submit" data="{{i.id}}"type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Comment</button>
+
+             {% for t in comm %}
+                <div class="post-bar w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+                    <span class="w3-right w3-opacity">1 min</span>
+                    <h4>{{t.owner.first_name}}</h4><br>
+                    <hr class="w3-clear">
+                    <p>{{t.text}}</p>
+
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                    <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Reply</button>
+                  </div>
+
+             {% endfor %}
+         </div>
+        <!-- Comment Box ends here -->
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+workinggggggggggggggggggggggggggggggggggggggggggg
+
+
+        {% for i in post %}
+        <div data="{{i.id}}" class="post-bar w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>{{i.owner.first_name}}</h4><br>
+        <hr class="w3-clear">
+        <p>{{i.text}}</p>
+          
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <button data="{{i.id}}" type="button" class="comment-button w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+        <!-- Comment Box starts here -->
+         <div id="comments" data="{{i.id}}" class="comment-bar w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+            <p id="comment_input" contenteditable="true" class="w3-border w3-padding"></p>
+             <button id="comment_submit" data="{{i.id}}"type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Comment</button>
+
+
+         </div>
+        <!-- Comment Box ends here -->
+{% endfor %}
+
+
+
+
+
+
+
+
+workiiiiiiiiiiingggggggggggg2
+
+{% for i, val in comments.items %}
+        <div data="{{i.id}}" class="post-bar w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>{{i.owner.first_name}}</h4><br>
+        <hr class="w3-clear">
+        <p>{{i.text}}</p>
+          
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+        <button data="{{i.id}}" type="button" class="comment-button w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+      </div>
+
+        <!-- Comment Box starts here -->
+         <div id="comments" data="{{i.id}}" class="comment-bar w3-container w3-card-2 w3-white w3-round w3-margin" ><br>
+            <p id="comment_input" contenteditable="true" class="w3-border w3-padding"></p>
+             <button id="comment_submit" data="{{i.id}}"type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Comment</button>
+
+
+         </div>
+        <!-- Comment Box ends here -->
+{% endfor %}
+

@@ -1,0 +1,55 @@
+{% extends "basic_app/profile.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="{% static '/js/profile.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/instant_chat.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/chatstyle.css' %}" type="text/css" media="all">
+<script type="text/javascript" src="{% static '/js/friendRequests.js' %}"></script>
+{% endblock %}
+
+{% block right-column %}
+     {% endblock %}}
+
+{% block middle-column %}
+
+
+     <div class="w3-col m7" style="margin-left: 1%; font-size: medium;font-weight: bold">
+      {% if req|length == 0 %}
+      <p>You have no friend requests at the moment</p>
+            
+
+      
+{% endif %}
+   
+ {% for i in req %}
+    
+
+
+    <div class="w3-card-2 w3-round w3-white w3-center">
+        <div class="w3-container">
+          <div>
+                     <p class="w3-center"><img src="{{i.requestFrom.profile_pic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                    <p  align="center"> <a href="/profile/{{i.requestFrom.id}}"> {{ i.requestFrom.first_name }} {{ i.requestFrom.last_name }}</a></p>
+                    </div>
+
+          <div  class="w3-row w3-opacity button">
+
+
+              <div class="w3-half">
+              <button status="1" data= {{i.requestFrom.email}} class="accept-button w3-button w3-block w3-green w3-section"  title="Accept"><i class="fa fa-check"></i></button>
+            </div>
+            <div class="w3-half">
+              <button status="0" data= {{i.requestFrom.email}} class="reject-button w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+            </div>
+
+          </div>
+        </div>
+   
+
+
+   </div>
+ {% endfor %}
+
+ {% endblock %}}  <!--end of middle block-->
