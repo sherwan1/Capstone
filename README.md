@@ -1,1 +1,1 @@
-
+The capstone project is about building a social media platform for university students which includes text/embedded youtube posts, real time chatting, groups, courses, edit profile. The front end is using CSS3, HTML 5, Jquery while backend is related to Python's Django framework. The project is deployed on AWS server as well. The link to the project is as follows: https://schoolmash.com/
